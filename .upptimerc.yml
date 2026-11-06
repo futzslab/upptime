@@ -24,6 +24,16 @@ sites:
     # Umami's healthcheck endpoint. Avoids logging a pageview on every probe,
     # which hitting the dashboard root would do.
  
+  - name: ICalSync
+    url: https://icalsync.futzs.com
+    slug: icalsync-fly-io   # keeps the uptime history from its Fly.io days
+    expectedStatusCodes:
+      - 200
+      - 405   # HEAD is rejected by design; 405 means the app answered
+
+  - name: Dobblegen
+    url: https://dobblegen.futzs.com
+ 
   # --- Hosted elsewhere -------------------------------------------------
   # Not on your server, but you still want to know when they break —
   # usually because of your own push or a DNS edit, not the provider.
@@ -37,11 +47,6 @@ sites:
   - name: shooter diary
     url: https://shooterdiary.sergekoudoro.com/
  
-  - name: icalsync (Fly.io)
-    url: https://icalsync.futzs.com
-    expectedStatusCodes:
-      - 200
-      - 405   # HEAD is rejected by design; 405 means the app answered
 
 assignees:
   - skoudoro 
